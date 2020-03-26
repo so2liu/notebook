@@ -4,7 +4,7 @@ Two ways for users to access a view: a link / entering a URL.
 
 # Prevent a link from being rendered
 
-1. If chirldren should not be rendered, they should not be computed.
+1. If children should not be rendered, they should not be computed.
 2. To render something else, if no user.
 
 ```js

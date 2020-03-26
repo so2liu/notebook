@@ -1,4 +1,4 @@
-# Udemy Course: Working wiith CSS Modules
+# Udemy Course: Working with CSS Modules
 
 Normally, we want to limit the CSS style in a specific scope.
 There are different approaches. 

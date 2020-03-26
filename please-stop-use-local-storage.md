@@ -17,7 +17,7 @@
 - Synchronous
 - Not used by webworkers
 - Limited storage size.
-- No data protection. It can be access by all Javasript code on this page.
+- No data protection. It can be access by all Javascript code on this page.
 
 ## Bad practices:
 
@@ -36,7 +36,7 @@
   1. User logs in
   2. Create a session identifier for them and store it in a cryptographically signed cookie.
   3. Set the httpOnly cookie flag in cookie library. (Read)
-  4. Set the SameSite=strict cookie flag in cookie library to protect CSRF attact. Secure=true to ensure cookies can only be set over an encrypted connection.
+  4. Set the SameSite=strict cookie flag in cookie library to protect CSRF attack. Secure=true to ensure cookies can only be set over an encrypted connection.
   5. Use session ID to retrieve their account details.
 - Non-String Data that isn't sensitive:
   - IndexedDB
