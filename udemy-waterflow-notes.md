@@ -132,3 +132,15 @@ const cockpit = props => {
   const authContext = useContext(AuthContext);
 };
 ```
+
+## How to plan a react app?
+![Planning a React App](/mdImg/plan-a-app.png)
+
+### Step1
+![](/mdImg/plan-app-step1.png)
+
+### Step2
+![](/mdImg/plan-app-step2.png)
+
+### Step3
+We manage the state in BurgerBuilder.caveat
