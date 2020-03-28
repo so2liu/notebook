@@ -8,7 +8,7 @@
 
 ## Why cool?
 
-- Pure Javascript (cookies need to be created by a web server)
+- Pure JavaScript (cookies need to be created by a web server)
 - It provides at least 5MB of data storage (cookies only 4KB)
 
 ## What're bad?
@@ -17,7 +17,7 @@
 - Synchronous
 - Not used by webworkers
 - Limited storage size.
-- No data protection. It can be access by all Javascript code on this page.
+- No data protection. It can be access by all JavaScript code on this page.
 
 ## Bad practices:
 

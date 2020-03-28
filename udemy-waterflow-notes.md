@@ -134,13 +134,126 @@ const cockpit = props => {
 ```
 
 ## How to plan a react app?
+
 ![Planning a React App](/mdImg/plan-a-app.png)
 
 ### Step1
+
 ![](/mdImg/plan-app-step1.png)
 
 ### Step2
+
 ![](/mdImg/plan-app-step2.png)
 
 ### Step3
+
 We manage the state in BurgerBuilder.caveat
+
+### Handle HTTP globally (for error handle)
+
+#### Request
+
+```js
+axios.interceptors.request.use(
+  request => {
+    console.log(request);
+    // edit request and then
+    return request;
+  },
+  error => {
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+```
+
+#### Response
+
+```js
+axios.interceptor.response.use(
+  response => {
+    console.log(response);
+    return response;
+  },
+  error => {
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+```
+
+### Spinner (for loading)
+
+Just google it...
+
+### React router
+
+#### Absolute vs relative paths
+
+##### Absolute Paths
+
+By default, if you just enter ` to="/some-path"`` or `to="some-path"` , that's an absolute path.
+
+Absolute path means that it's always appended right after your domain. Therefore, both syntaxes (with and without leading slash) lead to `example.com/some-path` .
+
+##### Relative Paths
+
+Sometimes, you might want to create a relative path instead. This is especially useful, if your component is already loaded given a specific path (e.g. posts ) and you then want to append something to that existing path (so that you, for example, get `/posts/new` ).
+
+If you're on a component loaded via `/posts` , `to="new"` would lead to `example.com/new` , NOT `example.com/posts/new` .
+
+`<Link to={props.match.url + '/new'}>` will lead to `example.com/posts/new` when placing this link in a component loaded on `/posts` . If you'd use the same `<Link>` in a component loaded via `/all-posts` , the link would point to `/all-posts/new` .
+
+#### Use `NavLink` instead of `Link`
+
+- This will add a class `class='active'`.
+- `<NavLink activeClassName="my-active">` changes the class name `active` to `my-active`.
+- Useful properties for `NavLink` are also `activeStyle` ...
+
+#### Router parameter
+
+...
+
+#### Navigating programmatically
+
+```js
+this.props.history.push({ pathname: "/" + id });
+```
+
+or
+
+```js
+this.props.history.push("/" + id);
+```
+
+#### Redirect
+
+##### `<Redirect>`
+
+##### Use history prop
+
+```js
+this.props.history.replace("posts");
+```
+
+The user won't back to the submit page.
+
+#### Lazy loading
+
+- Downloading the component only when it's used.
+- Highly dependent on webpack configuration. The following method is only for create-react-app and react-route.
+  [Watch this](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8138598#content)
+
+#### Lazy loading in newest react
+
+```js
+import React, {Suspense} from 'react'
+
+const Posts = React.lazy{()=>import('./containers/Posts')}
+
+<Route path="posts" render={()=>(
+  <Suspense fallback={<div>Loading...</div>}>
+    <Posts />
+  </Suspense>
+)}>
+```
