@@ -257,3 +257,47 @@ const Posts = React.lazy{()=>import('./containers/Posts')}
   </Suspense>
 )}>
 ```
+
+#### Router step by step
+
+1.  yarn add react-router-dom
+2.  wrap app with <BrowserRouser>
+3.  <Route path="/" component={BurgerBuilder}/>
+4.  use exact or <Switch> to avoid /
+5.  The component will get the special properties from router. HOC withRouter(burger) can eject these special properties of router.
+6.  Add link by this.props.history.push('/checkout'), this.props.history.goBack(), this.props.history.replace('/checkout')
+7.  Send parameters by query:
+
+Sender:
+
+```js
+const queryParams = [];
+for (let i in this.state.ingredients) {
+  queryParams.push(
+    encodeURIComponent(i) + "=" + encodeURIComponent(this.state.ingredients)
+  );
+}
+const queryString = queryParams.join("&");
+this.props.history.push({
+  pathname: "/",
+  search: "?" + queryString
+});
+```
+
+Receiver:
+
+```js
+const query = new URLSearchParams(this.props.location.search);
+const ingredients = {};
+for (let param of query.entries()) {
+  // ['salad', '1']
+  ingredients[param[0]] = +param[1];
+}
+this.setState((ingeredients: ingredients));
+```
+
+8. Pass the parameters by render.
+
+```js
+   <Route path={this.props.match.path+"/contact-data"} render={()=>(<ContactData ingredients={this.state.ingredients} />)}>
+```
